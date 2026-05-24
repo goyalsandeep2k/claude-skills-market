@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Skills Market · Discover &amp; Share Claude AI Skills</title>
+  <meta name="description" content="An open marketplace for Claude AI skills. Discover, download, and contribute skills built by the community.">
+  <meta property="og:title" content="Claude Skills Market">
+  <meta property="og:description" content="Discover and install Claude AI skills built by the community.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span class="brand-icon">⚡</span>
+        <span class="brand-name">Claude Skills<span class="brand-market"> Market</span></span>
+      </a>
+
+      <div class="nav-center">
+        <a href="https://goyalsandeep2k.github.io" class="nav-link" target="_blank">← Portfolio</a>
+        <a href="#contribute" class="nav-link">Contribute</a>
+        <a href="https://github.com/goyalsandeep2k/claude-skills" class="nav-link nav-gh" target="_blank">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          GitHub
+        </a>
+      </div>
+
+      <div class="nav-auth" id="navAuth">
+        <button class="btn-login" id="loginBtn" onclick="handleLogin()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          Login with GitHub
+        </button>
+        <div class="user-chip" id="userChip" style="display:none">
+          <img class="user-avatar" id="userAvatar" src="" alt="">
+          <span class="user-name" id="userName"></span>
+          <button class="user-logout" onclick="handleLogout()" title="Sign out">✕</button>
+        </div>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        🌐 Open Skill Repository · Built by
+        <a href="https://goyalsandeep2k.github.io" target="_blank">Sandeep Goyal</a>
+      </div>
+      <h1 class="hero-title">
+        The Claude AI<br>
+        <span class="hero-grad">Skills Marketplace</span>
+      </h1>
+      <p class="hero-sub">
+        Discover, install, and contribute Claude AI skills.<br>
+        Built by practitioners. Designed for productivity.
+      </p>
+
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="Search — program management, PRD, meetings, Google Slides…"
+          autocomplete="off"
+          spellcheck="false"
+        >
+        <button class="search-clear" id="searchClear" onclick="clearSearch()" style="display:none">✕</button>
+      </div>
+
+      <div class="hero-stats">
+        <div class="h-stat"><span class="h-stat-n" id="st-skills">6</span><span class="h-stat-l">Skills</span></div>
+        <div class="h-stat-div"></div>
+        <div class="h-stat"><span class="h-stat-n" id="st-downloads">98</span><span class="h-stat-l">Downloads</span></div>
+        <div class="h-stat-div"></div>
+        <div class="h-stat"><span class="h-stat-n" id="st-contributors">1</span><span class="h-stat-l">Contributors</span></div>
+        <div class="h-stat-div"></div>
+        <div class="h-stat"><span class="h-stat-n" id="st-stars">51</span><span class="h-stat-l">Stars</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CATEGORIES ── -->
+  <div class="cats-bar">
+    <div class="cats" id="cats"><!-- JS --></div>
+  </div>
+
+  <!-- ── SKILLS GRID ── -->
+  <main class="main">
+    <div class="skills-header">
+      <h2 class="skills-h" id="skillsH">All Skills</h2>
+      <span class="skills-count" id="skillsCount"></span>
+    </div>
+    <div class="skills-grid" id="skillsGrid"><!-- JS --></div>
+    <div class="no-results" id="noResults" style="display:none">
+      <div style="font-size:48px;margin-bottom:12px">🔍</div>
+      <strong>No skills found</strong>
+      <p>Try a different term or <a href="#" onclick="clearSearch();return false">clear the search</a>.</p>
+    </div>
+  </main>
+
+  <!-- ── TOP CONTRIBUTORS ── -->
+  <section class="contrib-section">
+    <div class="section-wrap">
+      <div class="section-hd">
+        <h2 class="section-title">Top Contributors</h2>
+        <p class="section-sub">The builders behind the skills. Your contribution could be next.</p>
+      </div>
+      <div class="contrib-grid" id="contribGrid"><!-- JS --></div>
+    </div>
+  </section>
+
+  <!-- ── CONTRIBUTE CTA ── -->
+  <section class="cta-section" id="contribute">
+    <div class="section-wrap">
+      <div class="cta-badge">🛠 Open Source</div>
+      <h2 class="cta-title">Share Your Skill with the World</h2>
+      <p class="cta-sub">Built something useful with Claude? Three steps to get it listed.</p>
+
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-icon">✍️</div>
+          <strong>Write a SKILL.md</strong>
+          <p>YAML frontmatter + markdown instructions. One file is all it takes.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-icon">📬</div>
+          <strong>Submit a GitHub Issue</strong>
+          <p>Use our skill submission template. We review and merge within 48h.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-icon">🚀</div>
+          <strong>Get Listed</strong>
+          <p>Your skill goes live on the marketplace — searchable and downloadable.</p>
+        </div>
+      </div>
+
+      <div class="cta-btns">
+        <a href="https://github.com/goyalsandeep2k/claude-skills/issues/new?template=skill-submission.yml&title=%5BSKILL%5D+Your+Skill+Name" target="_blank" class="btn-cta-primary">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          Submit a Skill on GitHub
+        </a>
+        <a href="https://github.com/goyalsandeep2k/claude-skills" target="_blank" class="btn-cta-outline">View Source Repo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">⚡ <strong>Claude Skills Market</strong> · Built by <a href="https://goyalsandeep2k.github.io" target="_blank">Sandeep Goyal</a></div>
+      <div class="footer-links">
+        <a href="https://github.com/goyalsandeep2k/claude-skills" target="_blank">GitHub</a>
+        <a href="https://goyalsandeep2k.github.io" target="_blank">Portfolio</a>
+        <a href="#contribute">Contribute</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── SKILL DETAIL MODAL ── -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+    <div class="modal" id="modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- ── GITHUB USERNAME MODAL (fallback auth) ── -->
+  <div class="modal-overlay" id="authOverlay" onclick="closeAuthModal()">
+    <div class="modal auth-modal" id="authModal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeAuthModal()">✕</button>
+      <div class="auth-modal-body">
+        <div style="font-size:40px;margin-bottom:12px">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </div>
+        <h3>Connect with GitHub</h3>
+        <p>Enter your GitHub username to join the marketplace community.</p>
+        <input type="text" id="ghUsernameInput" class="gh-input" placeholder="your-github-username" autocomplete="off">
+        <div class="auth-error" id="authError" style="display:none">User not found. Check the username and try again.</div>
+        <button class="btn-auth-submit" id="authSubmitBtn" onclick="submitGitHubUsername()">Connect →</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
