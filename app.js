@@ -1,14 +1,12 @@
 // ── CONFIG ──────────────────────────────────────────────────────────────────
-// To enable real GitHub OAuth:
-//  1. Create an OAuth App at https://github.com/settings/developers
-//  2. Set Homepage URL and Callback URL to your Netlify site URL
-//  3. Replace YOUR_GITHUB_CLIENT_ID below with your OAuth App's client_id
-//  4. In Netlify: set GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET env vars
-//  5. Deploy to Netlify
+// GitHub Device Flow OAuth — works purely on GitHub Pages, no backend needed.
+// The client_id is intentionally public (Device Flow never uses the secret).
 const CONFIG = {
-  GITHUB_CLIENT_ID: 'YOUR_GITHUB_CLIENT_ID',   // replace after creating OAuth App
+  GITHUB_CLIENT_ID: 'Ov23li0JzEUXU90fDHS0',
   GITHUB_REPO: 'goyalsandeep2k/claude-skills',
   SKILLS_DATA: './skills.json',
+  // CORS proxy for GitHub's OAuth endpoints (they block direct browser calls)
+  CORS_PROXY: 'https://corsproxy.io/?',
 };
 
 // ── STATE ────────────────────────────────────────────────────────────────────
@@ -269,32 +267,119 @@ async function loadContributors() {
   }
 }
 
-// ── GITHUB AUTH ───────────────────────────────────────────────────────────────
-function handleLogin() {
-  const hasRealOAuth = CONFIG.GITHUB_CLIENT_ID && CONFIG.GITHUB_CLIENT_ID !== 'YOUR_GITHUB_CLIENT_ID';
+// ── GITHUB DEVICE FLOW OAUTH ─────────────────────────────────────────────────
+// No backend needed. Client ID is public — Device Flow never uses the secret.
+// Flow: request device code → show user code → user visits github.com/login/device
+//        → we poll for token → fetch profile → done.
 
-  if (hasRealOAuth) {
-    // Real OAuth flow (works when deployed to Netlify)
-    const state = Math.random().toString(36).slice(2);
-    sessionStorage.setItem('oauth_state', state);
-    const url = `https://github.com/login/oauth/authorize?client_id=${CONFIG.GITHUB_CLIENT_ID}&scope=read:user&state=${state}`;
-    window.location.href = url;
-  } else {
-    // Fallback: connect by GitHub username (no backend needed)
+let _devicePollTimer = null;
+
+async function handleLogin() {
+  closeAuthModal();
+
+  // Show "connecting" state immediately
+  const btn = document.getElementById('loginBtn');
+  const origHTML = btn.innerHTML;
+  btn.innerHTML = '<span style="opacity:.6">Connecting…</span>';
+  btn.disabled = true;
+
+  try {
+    const proxyBase = CONFIG.CORS_PROXY;
+
+    // Step 1: Request device + user codes
+    const codeRes = await fetch(proxyBase + encodeURIComponent('https://github.com/login/device/code'), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ client_id: CONFIG.GITHUB_CLIENT_ID, scope: 'read:user' }),
+    });
+    if (!codeRes.ok) throw new Error('device_code_request_failed');
+    const { user_code, device_code, verification_uri, interval = 5, expires_in = 900 } = await codeRes.json();
+    if (!user_code) throw new Error('no_user_code');
+
+    btn.innerHTML = origHTML; btn.disabled = false;
+
+    // Step 2: Show the code modal
+    showDeviceModal(user_code, verification_uri, expires_in);
+
+    // Step 3: Poll in background
+    _devicePollTimer = setInterval(async () => {
+      try {
+        const tokenRes = await fetch(proxyBase + encodeURIComponent('https://github.com/login/oauth/access_token'), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            client_id: CONFIG.GITHUB_CLIENT_ID,
+            device_code,
+            grant_type: 'urn:ietf:params:oauth:grant-type:device_code',
+          }),
+        });
+        const data = await tokenRes.json();
+
+        if (data.access_token) {
+          clearInterval(_devicePollTimer);
+          closeDeviceModal();
+          localStorage.setItem('gh_token', data.access_token);
+          const user = await fetch('https://api.github.com/user', {
+            headers: { Authorization: `token ${data.access_token}` },
+          }).then(r => r.json());
+          saveUser({ login: user.login, name: user.name || user.login, avatar_url: user.avatar_url });
+        } else if (data.error === 'expired_token') {
+          clearInterval(_devicePollTimer);
+          setDeviceModalError('Code expired — please try again.');
+        }
+        // 'authorization_pending' and 'slow_down' → just keep polling
+      } catch { /* network hiccup — keep polling */ }
+    }, (interval + 1) * 1000);
+
+  } catch (err) {
+    btn.innerHTML = origHTML; btn.disabled = false;
+    // Fallback: username connect
     document.getElementById('authOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
     setTimeout(() => document.getElementById('ghUsernameInput').focus(), 100);
   }
 }
 
+function showDeviceModal(userCode, verifyUrl, expiresIn) {
+  const overlay = document.getElementById('deviceOverlay');
+  document.getElementById('deviceCode').textContent = userCode;
+  document.getElementById('deviceOpenBtn').href = verifyUrl;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  // Countdown
+  let remaining = expiresIn;
+  const tick = () => {
+    const el = document.getElementById('deviceCountdown');
+    if (el) el.textContent = `Code expires in ${Math.floor(remaining / 60)}:${String(remaining % 60).padStart(2, '0')}`;
+    remaining--;
+    if (remaining >= 0) setTimeout(tick, 1000);
+  };
+  tick();
+}
+
+function setDeviceModalError(msg) {
+  const el = document.getElementById('deviceError');
+  if (el) { el.textContent = msg; el.style.display = 'block'; }
+}
+
+function closeDeviceModal() {
+  clearInterval(_devicePollTimer);
+  document.getElementById('deviceOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Legacy username-connect fallback (shows if Device Flow errors out)
 function closeAuthModal() {
   document.getElementById('authOverlay').classList.remove('open');
   document.body.style.overflow = '';
   document.getElementById('authError').style.display = 'none';
 }
 
-document.getElementById('ghUsernameInput')?.addEventListener('keydown', e => {
-  if (e.key === 'Enter') submitGitHubUsername();
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('ghUsernameInput')?.addEventListener('keydown', e => {
+    if (e.key === 'Enter') submitGitHubUsername();
+  });
 });
 
 async function submitGitHubUsername() {
@@ -303,10 +388,8 @@ async function submitGitHubUsername() {
   const err   = document.getElementById('authError');
   const uname = input.value.trim();
   if (!uname) return;
-
   btn.textContent = 'Connecting…'; btn.disabled = true;
   err.style.display = 'none';
-
   try {
     const res = await fetch(`https://api.github.com/users/${uname}`);
     if (!res.ok) throw 0;
@@ -321,23 +404,18 @@ async function submitGitHubUsername() {
   }
 }
 
-// Called on page load — handles redirect back from GitHub OAuth
+// No redirect callback needed for Device Flow
 function handleAuthCallback() {
   const params = new URLSearchParams(window.location.search);
   const token  = params.get('token');
   if (!token) return;
-
   history.replaceState({}, '', window.location.pathname);
-
-  fetch('https://api.github.com/user', {
-    headers: { Authorization: `token ${token}` },
-  })
+  fetch('https://api.github.com/user', { headers: { Authorization: `token ${token}` } })
     .then(r => r.json())
     .then(u => {
       localStorage.setItem('gh_token', token);
       saveUser({ login: u.login, name: u.name || u.login, avatar_url: u.avatar_url });
-    })
-    .catch(() => {});
+    }).catch(() => {});
 }
 
 function restoreSession() {
