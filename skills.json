@@ -94,25 +94,6 @@
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/dep-risk-tracker/SKILL.md",
       "repoUrl": "https://github.com/goyalsandeep2k/claude-skills/tree/main/skills/dep-risk-tracker",
       "createdAt": "2025-02-15"
-    },
-    {
-      "id": "gslides-connector",
-      "name": "Google Slides",
-      "fullName": "Google Slides MCP Connector",
-      "emoji": "📑",
-      "color": "#a855f7",
-      "author": "goyalsandeep2k",
-      "authorName": "Sandeep Goyal",
-      "description": "Wire Claude directly to Google Slides and Drive via MCP — summarize decks, extract decisions, compare versions, and search presentations natively.",
-      "longDescription": "Stop screenshotting slides and pasting them into Claude. This skill wires up a live MCP (Model Context Protocol) connection to your Google Drive and Slides so you can ask Claude about your presentations directly. Summarize entire decks in seconds, extract key decisions and action items, compare multiple deck versions side-by-side, and search across your entire Drive for any topic — all without leaving Claude Code.",
-      "category": "integrations",
-      "tags": ["google-slides", "mcp", "integrations", "drive", "presentations"],
-      "downloads": 15,
-      "stars": 10,
-      "featured": false,
-      "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/gslides-connector/SKILL.md",
-      "repoUrl": "https://github.com/goyalsandeep2k/claude-skills/tree/main/skills/gslides-connector",
-      "createdAt": "2025-02-20"
     }
   ],
   "categories": [
@@ -120,13 +101,12 @@
     { "id": "productivity", "label": "🗂 Productivity" },
     { "id": "product", "label": "📦 Product" },
     { "id": "leadership", "label": "🎯 Leadership" },
-    { "id": "planning", "label": "🗺 Planning" },
-    { "id": "integrations", "label": "🔌 Integrations" }
+    { "id": "planning", "label": "🗺 Planning" }
   ],
   "stats": {
-    "totalSkills": 6,
-    "totalDownloads": 98,
+    "totalSkills": 5,
+    "totalDownloads": 83,
     "totalContributors": 1,
-    "totalStars": 51
+    "totalStars": 41
   }
 }
