@@ -15,6 +15,47 @@ let filtered  = [];
 let activeCat = 'all';
 let query     = '';
 
+// ── STARS (localStorage) ──────────────────────────────────────────────────────
+const STARS_KEY = 'csm_stars'; // { skillId: true/false }
+
+function getStarredMap() {
+  try { return JSON.parse(localStorage.getItem(STARS_KEY)) || {}; } catch { return {}; }
+}
+function isStarred(id) { return !!getStarredMap()[id]; }
+
+function getStarCount(skill) {
+  // Base stars from JSON + 1 if this visitor has starred it
+  return skill.stars + (isStarred(skill.id) ? 1 : 0);
+}
+
+function toggleStar(id, event) {
+  event.stopPropagation();
+  const map = getStarredMap();
+  map[id] = !map[id];
+  localStorage.setItem(STARS_KEY, JSON.stringify(map));
+
+  // Update every star button for this skill on the page
+  document.querySelectorAll(`.star-btn[data-id="${id}"]`).forEach(btn => {
+    const skill = allSkills.find(s => s.id === id);
+    const count = getStarCount(skill);
+    const on = map[id];
+    btn.classList.toggle('starred', on);
+    btn.querySelector('.star-count').textContent = count;
+    btn.title = on ? 'Unstar' : 'Star this skill';
+  });
+
+  // Update hero total
+  updateHeroStars();
+}
+
+function updateHeroStars() {
+  const map = getStarredMap();
+  const base = allSkills.reduce((sum, s) => sum + s.stars, 0);
+  const added = Object.values(map).filter(Boolean).length;
+  const el = document.getElementById('st-stars');
+  if (el) el.textContent = base + added;
+}
+
 // ── INIT ─────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
   handleAuthCallback();   // must run before restoreSession to avoid flash
@@ -45,10 +86,9 @@ async function loadSkills() {
     document.getElementById('st-skills').textContent      = data.stats.totalSkills;
     document.getElementById('st-downloads').textContent   = data.stats.totalDownloads;
     document.getElementById('st-contributors').textContent = data.stats.totalContributors;
-    document.getElementById('st-stars').textContent       = data.stats.totalStars;
-
     renderCategories(data.categories);
     renderSkills();
+    updateHeroStars(); // apply any localStorage stars on top of base counts
   } catch (e) {
     document.getElementById('skillsGrid').innerHTML =
       '<p style="color:var(--text-muted);padding:20px">Could not load skills data.</p>';
@@ -141,7 +181,12 @@ function renderSkills() {
       <div class="skill-card-foot">
         <div class="skill-foot-stats">
           <span class="skill-foot-stat">⬇ ${s.downloads}</span>
-          <span class="skill-foot-stat">⭐ ${s.stars}</span>
+          <button class="star-btn${isStarred(s.id) ? ' starred' : ''}" data-id="${s.id}"
+            onclick="toggleStar('${s.id}', event)"
+            title="${isStarred(s.id) ? 'Unstar' : 'Star this skill'}">
+            <span class="star-icon">${isStarred(s.id) ? '⭐' : '☆'}</span>
+            <span class="star-count">${getStarCount(s)}</span>
+          </button>
         </div>
         <button class="btn-install" onclick="event.stopPropagation(); quickInstall('${s.id}', this)">
           Install
@@ -198,7 +243,16 @@ function openModal(id) {
     <div class="modal-tags">${s.tags.map(t => `<span class="skill-tag">${t}</span>`).join('')}</div>
     <div class="modal-stats">
       <div class="modal-stat"><strong>${s.downloads}</strong><span>Downloads</span></div>
-      <div class="modal-stat"><strong>${s.stars}</strong><span>Stars</span></div>
+      <div class="modal-stat">
+        <button class="star-btn${isStarred(s.id) ? ' starred' : ''}" data-id="${s.id}"
+          onclick="toggleStar('${s.id}', event)"
+          title="${isStarred(s.id) ? 'Unstar' : 'Star this skill'}"
+          style="font-size:15px;padding:4px 14px">
+          <span class="star-icon">${isStarred(s.id) ? '⭐' : '☆'}</span>
+          <span class="star-count">${getStarCount(s)}</span>
+        </button>
+        <span>Stars</span>
+      </div>
       <div class="modal-stat"><strong style="text-transform:capitalize">${s.category}</strong><span>Category</span></div>
     </div>
     <div class="modal-install-section">
