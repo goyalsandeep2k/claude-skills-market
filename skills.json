@@ -94,6 +94,25 @@
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/dep-risk-tracker/SKILL.md",
       "repoUrl": "https://github.com/goyalsandeep2k/claude-skills/tree/main/skills/dep-risk-tracker",
       "createdAt": "2025-02-15"
+    },
+    {
+      "id": "annual-planning",
+      "name": "Annual Planning",
+      "fullName": "Annual & Quarterly Planning Orchestrator",
+      "emoji": "🗓",
+      "color": "#8b5cf6",
+      "author": "goyalsandeep2k",
+      "authorName": "Sandeep Goyal",
+      "description": "Run the full planning cycle end-to-end — link strategy to execution, map cross-team dependencies, track commitments, and generate a live visual dashboard.",
+      "longDescription": "Stop running planning in spreadsheets and Slack threads. This skill ingests your strategy papers, org goals, and company OKRs from Google Docs, Confluence, or PDFs — then automatically maps every cross-team dependency, surfaces resource conflicts, drafts commitment requests to partner teams, manages your tracker in Smartsheet, and generates a self-contained HTML dashboard with a visual dependency map and real-time commitment status (Confirmed / Pending / At-Risk) per team. Built for Heads of TPM and senior program leaders who run annual or quarterly planning across complex orgs.",
+      "category": "planning",
+      "tags": ["planning", "annual-planning", "dependencies", "commitments", "smartsheet", "dashboard", "tpm"],
+      "downloads": 0,
+      "stars": 0,
+      "featured": true,
+      "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/annual-planning/SKILL.md",
+      "repoUrl": "https://github.com/goyalsandeep2k/claude-skills/tree/main/skills/annual-planning",
+      "createdAt": "2026-05-25"
     }
   ],
   "categories": [
@@ -104,7 +123,7 @@
     { "id": "planning", "label": "🗺 Planning" }
   ],
   "stats": {
-    "totalSkills": 5,
+    "totalSkills": 6,
     "totalDownloads": 83,
     "totalContributors": 1,
     "totalStars": 41
