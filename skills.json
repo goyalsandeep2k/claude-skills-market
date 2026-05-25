@@ -96,6 +96,25 @@
       "createdAt": "2025-02-15"
     },
     {
+      "id": "program-launch",
+      "name": "Program Launch",
+      "fullName": "New Program Launch Command Center",
+      "emoji": "🚦",
+      "color": "#0ea5e9",
+      "author": "goyalsandeep2k",
+      "authorName": "Sandeep Goyal",
+      "description": "End-to-end program initiation toolkit — generates every artifact needed to launch a new program: Charter, OKRs, DRI model, RACI, RAID log, Governance, Change Management plan, Operating Rhythm, and a live Health Dashboard.",
+      "longDescription": "Stop starting programs from scratch. This skill walks you through every phase of program initiation and generates production-ready artifacts: a filled-out Program Charter, OKR framework with success metrics, DRI ownership model, RACI matrix, full RAID log, governance structure, change management plan, operating rhythm calendar, portfolio prioritization matrix, and a self-contained HTML health dashboard. Built on proven frameworks — OKRs, DRI, RACI, ADKAR, WSJF — with a bundled reference guide covering each one in depth. For TPMs, heads of program management, and senior leaders launching complex multi-team initiatives.",
+      "category": "planning",
+      "tags": ["program-management", "charter", "okr", "raci", "raid", "governance", "change-management", "dashboard", "tpm"],
+      "downloads": 0,
+      "stars": 0,
+      "featured": true,
+      "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/program-launch/SKILL.md",
+      "repoUrl": "https://github.com/goyalsandeep2k/claude-skills/tree/main/skills/program-launch",
+      "createdAt": "2026-05-25"
+    },
+    {
       "id": "annual-planning",
       "name": "Annual Planning",
       "fullName": "Annual & Quarterly Planning Orchestrator",
@@ -123,7 +142,7 @@
     { "id": "planning", "label": "🗺 Planning" }
   ],
   "stats": {
-    "totalSkills": 6,
+    "totalSkills": 7,
     "totalDownloads": 83,
     "totalContributors": 1,
     "totalStars": 41
