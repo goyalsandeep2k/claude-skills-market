@@ -238,13 +238,13 @@ a:hover { color: var(--text); }
 .skill-foot-stat { font-size: 12.5px; color: var(--text-muted); }
 .star-btn {
   display: inline-flex; align-items: center; gap: 4px;
-  background: none; border: 1px solid var(--border2);
+  background: none; border: 1px solid #f59e0b;
   border-radius: 20px; padding: 3px 10px;
-  font-size: 12.5px; color: var(--text-muted);
+  font-size: 12.5px; color: #f59e0b;
   cursor: pointer; transition: all .18s ease; line-height: 1;
 }
-.star-btn:hover { border-color: #f59e0b; color: #f59e0b; background: rgba(245,158,11,.08); }
-.star-btn.starred { border-color: #f59e0b; color: #f59e0b; background: rgba(245,158,11,.12); }
+.star-btn:hover { background: rgba(245,158,11,.12); }
+.star-btn.starred { background: rgba(245,158,11,.18); }
 .star-btn .star-icon { font-size: 13px; }
 .star-btn.starred .star-icon { animation: star-pop .22s ease; }
 @keyframes star-pop {
