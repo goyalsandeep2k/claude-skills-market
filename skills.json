@@ -132,17 +132,37 @@
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/annual-planning/SKILL.md",
       "repoUrl": "https://github.com/goyalsandeep2k/claude-skills/tree/main/skills/annual-planning",
       "createdAt": "2026-05-25"
+    },
+    {
+      "id": "google-suite-mcp",
+      "name": "Google Suite MCP",
+      "fullName": "Personal Google Suite MCP Connector",
+      "emoji": "🔌",
+      "color": "#4285f4",
+      "author": "goyalsandeep2k",
+      "authorName": "Sandeep Goyal",
+      "description": "Connect Claude to your personal Google account — Drive, Docs, Sheets, Slides, Gmail & Calendar. 29 tools. Zero external dependencies. One npx command.",
+      "longDescription": "The all-in-one MCP connector for your personal Google account. 29 tools spanning Google Drive (search, list, create folders), Docs (read, create, edit), Sheets (read, write, append rows), Slides (read, add slides, update text, duplicate), Gmail (search, send, draft), and Calendar (list, create, update events). Zero external CLI tools required — pure Node.js + googleapis. Set up once with your own Google Cloud OAuth credentials — token auto-refreshes forever. Works with Claude Code, Cursor, and any MCP-compatible client. The only connector that covers all 6 Google services in a single zero-dependency package built for personal accounts.",
+      "category": "mcp-connector",
+      "tags": ["mcp", "google", "drive", "slides", "gmail", "calendar", "connector", "personal"],
+      "downloads": 0,
+      "stars": 0,
+      "featured": true,
+      "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/google-suite-mcp/master/README.md",
+      "repoUrl": "https://github.com/goyalsandeep2k/google-suite-mcp",
+      "createdAt": "2026-05-26"
     }
   ],
   "categories": [
-    { "id": "all", "label": "All Skills" },
+    { "id": "all", "label": "All" },
     { "id": "productivity", "label": "🗂 Productivity" },
     { "id": "product", "label": "📦 Product" },
     { "id": "leadership", "label": "🎯 Leadership" },
-    { "id": "planning", "label": "🗺 Planning" }
+    { "id": "planning", "label": "🗺 Planning" },
+    { "id": "mcp-connector", "label": "🔌 MCP Connectors" }
   ],
   "stats": {
-    "totalSkills": 7,
+    "totalSkills": 8,
     "totalDownloads": 83,
     "totalContributors": 1,
     "totalStars": 41
