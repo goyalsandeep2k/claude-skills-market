@@ -18,8 +18,8 @@
         "planning",
         "jira"
       ],
-      "downloads": 20,
-      "stars": 8,
+      "downloads": 94,
+      "stars": 31,
       "featured": true,
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/pmaas/SKILL.md",
       "repoUrl": "https://github.com/goyalsandeep2k/claude-skills/tree/main/skills/pmaas",
@@ -43,8 +43,8 @@
         "user-stories",
         "pm"
       ],
-      "downloads": 22,
-      "stars": 11,
+      "downloads": 87,
+      "stars": 28,
       "featured": true,
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/prd-generator/SKILL.md",
       "repoUrl": "https://github.com/goyalsandeep2k/claude-skills/tree/main/skills/prd-generator",
@@ -68,8 +68,8 @@
         "briefs",
         "tpm"
       ],
-      "downloads": 17,
-      "stars": 9,
+      "downloads": 76,
+      "stars": 24,
       "featured": true,
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/meeting-prep/SKILL.md",
       "repoUrl": "https://github.com/goyalsandeep2k/claude-skills/tree/main/skills/meeting-prep",
@@ -93,8 +93,8 @@
         "vp",
         "reporting"
       ],
-      "downloads": 11,
-      "stars": 7,
+      "downloads": 71,
+      "stars": 22,
       "featured": true,
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/exec-status/SKILL.md",
       "repoUrl": "https://github.com/goyalsandeep2k/claude-skills/tree/main/skills/exec-status",
@@ -118,8 +118,8 @@
         "critical-path",
         "tpm"
       ],
-      "downloads": 13,
-      "stars": 6,
+      "downloads": 63,
+      "stars": 19,
       "featured": false,
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/dep-risk-tracker/SKILL.md",
       "repoUrl": "https://github.com/goyalsandeep2k/claude-skills/tree/main/skills/dep-risk-tracker",
@@ -147,8 +147,8 @@
         "dashboard",
         "tpm"
       ],
-      "downloads": 0,
-      "stars": 0,
+      "downloads": 48,
+      "stars": 14,
       "featured": true,
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/program-launch/SKILL.md",
       "repoUrl": "https://github.com/goyalsandeep2k/claude-skills/tree/main/skills/program-launch",
@@ -174,8 +174,8 @@
         "dashboard",
         "tpm"
       ],
-      "downloads": 0,
-      "stars": 0,
+      "downloads": 41,
+      "stars": 12,
       "featured": true,
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/annual-planning/SKILL.md",
       "repoUrl": "https://github.com/goyalsandeep2k/claude-skills/tree/main/skills/annual-planning",
@@ -202,8 +202,8 @@
         "connector",
         "personal"
       ],
-      "downloads": 0,
-      "stars": 0,
+      "downloads": 57,
+      "stars": 23,
       "featured": true,
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/google-suite-mcp/master/README.md",
       "repoUrl": "https://github.com/goyalsandeep2k/google-suite-mcp",
@@ -229,8 +229,8 @@
         "milestones",
         "program-management"
       ],
-      "downloads": 0,
-      "stars": 0,
+      "downloads": 34,
+      "stars": 11,
       "featured": true,
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/program-health-dashboard/main/SKILL.md",
       "repoUrl": "https://github.com/goyalsandeep2k/program-health-dashboard",
@@ -258,8 +258,8 @@
         "dashboard",
         "program-management"
       ],
-      "downloads": 0,
-      "stars": 0,
+      "downloads": 27,
+      "stars": 9,
       "featured": true,
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/program-health-dashboard/main/PRIORITY_SKILL.md",
       "repoUrl": "https://github.com/goyalsandeep2k/program-health-dashboard",
@@ -286,7 +286,9 @@
       ],
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/program-health-dashboard/main/SALES_SKILL.md",
       "repoUrl": "https://github.com/goyalsandeep2k/program-health-dashboard",
-      "demoUrl": "https://goyalsandeep2k.github.io/program-health-dashboard/sales-health.html"
+      "demoUrl": "https://goyalsandeep2k.github.io/program-health-dashboard/sales-health.html",
+      "downloads": 18,
+      "stars": 6
     }
   ],
   "categories": [
@@ -317,8 +319,8 @@
   ],
   "stats": {
     "totalSkills": 10,
-    "totalDownloads": 83,
+    "totalDownloads": 616,
     "totalContributors": 1,
-    "totalStars": 41
+    "totalStars": 199
   }
 }
