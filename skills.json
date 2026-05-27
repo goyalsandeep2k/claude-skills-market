@@ -265,6 +265,28 @@
       "repoUrl": "https://github.com/goyalsandeep2k/program-health-dashboard",
       "demoUrl": "https://goyalsandeep2k.github.io/program-health-dashboard/priorities.html",
       "createdAt": "2026-05-26"
+    },
+    {
+      "id": "sales-program-health",
+      "name": "Sales Program Health",
+      "emoji": "\ud83d\udcb9",
+      "color": "#22c55e",
+      "category": "planning",
+      "featured": true,
+      "description": "Revenue-aware sales program dashboard with ARR waterfall, NRR, CAC, LTV:CAC, unit economics, and an AI-generated exec narrative \u2014 answers 'are we on track to hit ARR target, and why?'",
+      "tags": [
+        "sales",
+        "ARR",
+        "NRR",
+        "revenue",
+        "exec-narrative",
+        "health-dashboard",
+        "CAC",
+        "LTV"
+      ],
+      "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/program-health-dashboard/main/SALES_SKILL.md",
+      "repoUrl": "https://github.com/goyalsandeep2k/program-health-dashboard",
+      "demoUrl": "https://goyalsandeep2k.github.io/program-health-dashboard/sales-health.html"
     }
   ],
   "categories": [
