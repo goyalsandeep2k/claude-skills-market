@@ -236,6 +236,35 @@
       "repoUrl": "https://github.com/goyalsandeep2k/program-health-dashboard",
       "demoUrl": "https://goyalsandeep2k.github.io/program-health-dashboard/",
       "createdAt": "2026-05-26"
+    },
+    {
+      "id": "org-priority-stack",
+      "name": "Org Priority Stack",
+      "fullName": "Organizational Priority Stack",
+      "emoji": "\ud83c\udfc6",
+      "color": "#22c55e",
+      "author": "goyalsandeep2k",
+      "authorName": "Sandeep Goyal",
+      "description": "Rank every competing program in your org by revenue impact. Define organizational priorities, assign DRIs, and generate a shareable visual dashboard \u2014 the single source of truth for staffing and go/no-go decisions.",
+      "longDescription": "Stop debating priorities in spreadsheets and slides. This skill takes your full list of competing programs \u2014 across Feature Delivery, Reliability, and Platform domains \u2014 and produces a ranked, revenue-sorted HTML priority dashboard. Each program shows its annual input goal, estimated revenue impact (direct ARR, ARR protected from churn, or future ARR unlocked), and a named DRI with title. Three clear ranking rules replace any subjective scoring: Direct ARR, ARR Protected, Future ARR Unlocked (50% discounted for time lag). Platform investments carry a 20% eng capacity floor regardless of rank. Output is a self-contained HTML page publishable to GitHub Pages. Works for any org, any domain mix, any company size. Pairs with the Program Health Dashboard skill for full program lifecycle coverage.",
+      "category": "planning",
+      "tags": [
+        "tpm",
+        "prioritization",
+        "planning",
+        "org-design",
+        "dri",
+        "revenue",
+        "dashboard",
+        "program-management"
+      ],
+      "downloads": 0,
+      "stars": 0,
+      "featured": true,
+      "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/program-health-dashboard/main/PRIORITY_SKILL.md",
+      "repoUrl": "https://github.com/goyalsandeep2k/program-health-dashboard",
+      "demoUrl": "https://goyalsandeep2k.github.io/program-health-dashboard/priorities.html",
+      "createdAt": "2026-05-26"
     }
   ],
   "categories": [
@@ -265,7 +294,7 @@
     }
   ],
   "stats": {
-    "totalSkills": 9,
+    "totalSkills": 10,
     "totalDownloads": 83,
     "totalContributors": 1,
     "totalStars": 41
