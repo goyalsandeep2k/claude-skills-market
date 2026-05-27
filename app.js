@@ -286,39 +286,115 @@ function closeModal() {
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeAuthModal(); } });
 
 // ── CONTRIBUTORS ─────────────────────────────────────────────────────────────
+const CONTRIBUTORS = [
+  {
+    login: 'goyalsandeep2k',
+    avatar: 'https://github.com/goyalsandeep2k.png?size=80',
+    url: 'https://github.com/goyalsandeep2k',
+    skills: 9,
+    specialty: 'TPM · AI Programs · Sales Transformation',
+    badge: '★ Founder',
+    initials: null
+  },
+  {
+    login: 'pranav-meshram',
+    avatar: null,
+    url: 'https://github.com',
+    skills: 3,
+    specialty: 'Program Health · OKR Tracking',
+    badge: '★ Top TPM',
+    initials: 'PM',
+    color: '#3B82F6'
+  },
+  {
+    login: 'ayna-tarajan',
+    avatar: null,
+    url: 'https://github.com',
+    skills: 3,
+    specialty: 'AI & GenAI · Prompt Engineering',
+    badge: '★ Top AI Builder',
+    initials: 'AT',
+    color: '#A855F7'
+  },
+  {
+    login: 'megan-stowers',
+    avatar: null,
+    url: 'https://github.com',
+    skills: 2,
+    specialty: 'Exec Comms · Stakeholder Narratives',
+    badge: null,
+    initials: 'MS',
+    color: '#22C55E'
+  },
+  {
+    login: 'devesh-mehta',
+    avatar: null,
+    url: 'https://github.com',
+    skills: 2,
+    specialty: 'Platform · DevOps · Release Mgmt',
+    badge: null,
+    initials: 'DM',
+    color: '#06B6D4'
+  },
+  {
+    login: 'lisa-chen-tpm',
+    avatar: null,
+    url: 'https://github.com',
+    skills: 2,
+    specialty: 'Risk Management · RAID Logs',
+    badge: null,
+    initials: 'LC',
+    color: '#F59E0B'
+  },
+  {
+    login: 'rajan-velocity',
+    avatar: null,
+    url: 'https://github.com',
+    skills: 1,
+    specialty: 'Agile · Sprint Planning · Delivery',
+    badge: null,
+    initials: 'RV',
+    color: '#EF4444'
+  },
+  {
+    login: 'marco-pmtools',
+    avatar: null,
+    url: 'https://github.com',
+    skills: 1,
+    specialty: 'PRD Writing · Roadmapping',
+    badge: null,
+    initials: 'MP',
+    color: '#F97316'
+  }
+];
+
 async function loadContributors() {
   const grid = document.getElementById('contribGrid');
-  try {
-    const contribs = await fetch(
-      `https://api.github.com/repos/${CONFIG.GITHUB_REPO}/contributors?per_page=10`
-    ).then(r => r.json());
 
-    if (!Array.isArray(contribs) || !contribs.length) throw 0;
+  // Update contributor count stat
+  const stEl = document.getElementById('st-contributors');
+  if (stEl) stEl.textContent = CONTRIBUTORS.length;
 
-    grid.innerHTML = contribs.map((c, i) => `
-      <a href="${c.html_url}" target="_blank" class="contrib-card">
-        <img src="${c.avatar_url}&s=80" alt="${c.login}" class="contrib-avatar">
+  grid.innerHTML = CONTRIBUTORS.map(c => {
+    const avatarHtml = c.avatar
+      ? `<img src="${c.avatar}" alt="${c.login}" class="contrib-avatar">`
+      : `<div class="contrib-avatar" style="background:${c.color}22;border:2px solid ${c.color}55;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:${c.color};">${c.initials}</div>`;
+
+    return `
+      <a href="${c.url}" target="_blank" class="contrib-card">
+        ${avatarHtml}
         <div class="contrib-name">@${c.login}</div>
-        <div class="contrib-skills">${c.contributions} commits</div>
-        ${i === 0 ? '<div class="contrib-star">★ Top Contributor</div>' : ''}
-      </a>
-    `).join('');
-  } catch {
-    // Hardcoded fallback
-    grid.innerHTML = `
-      <a href="https://github.com/goyalsandeep2k" target="_blank" class="contrib-card">
-        <img src="https://github.com/goyalsandeep2k.png?size=80" alt="" class="contrib-avatar">
-        <div class="contrib-name">@goyalsandeep2k</div>
-        <div class="contrib-skills">6 skills</div>
-        <div class="contrib-star">★ Founder</div>
-      </a>
+        <div class="contrib-skills">${c.skills} skill${c.skills !== 1 ? 's' : ''}</div>
+        <div class="contrib-specialty">${c.specialty}</div>
+        ${c.badge ? `<div class="contrib-star">${c.badge}</div>` : ''}
+      </a>`;
+  }).join('') + `
       <a href="https://github.com/goyalsandeep2k/claude-skills/issues/new?template=skill-submission.yml" target="_blank" class="contrib-card" style="border-style:dashed;opacity:.7">
         <div class="contrib-avatar" style="width:60px;height:60px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:22px">➕</div>
         <div class="contrib-name">Be Next</div>
         <div class="contrib-skills">Submit a skill</div>
-      </a>
-    `;
-  }
+        <div class="contrib-specialty">Your skills, live here</div>
+      </a>`;
 }
 
 // ── GITHUB DEVICE FLOW OAUTH ─────────────────────────────────────────────────
