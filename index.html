@@ -234,17 +234,25 @@
     var el        = document.getElementById('st-pageviews');
 
     var BASE = 100; // launch baseline — real visits add on top
-    fetch('https://api.countapi.xyz/hit/' + NAMESPACE + '/' + KEY)
+    // counterapi.dev — reliable free hit counter
+    fetch('https://api.counterapi.dev/v1/sandeep-skills-market/pageviews/up')
       .then(function(r) { return r.json(); })
       .then(function(d) {
-        if (d && d.value != null) {
-          var v = BASE + d.value;
-          el.textContent = v >= 1000
-            ? (v / 1000).toFixed(1).replace(/\.0$/, '') + 'k'
-            : v;
-        }
+        var raw = d.count || d.value || 0;
+        var v = BASE + raw;
+        el.textContent = v >= 1000
+          ? (v / 1000).toFixed(1).replace(/\.0$/, '') + 'k'
+          : v;
+        // persist locally so refresh never shows blank
+        try { localStorage.setItem('sc_pv', v); } catch(e) {}
       })
-      .catch(function() { el.textContent = BASE; });
+      .catch(function() {
+        // fallback: show last known count from localStorage
+        try {
+          var cached = localStorage.getItem('sc_pv');
+          el.textContent = cached || BASE;
+        } catch(e) { el.textContent = BASE; }
+      });
   })();
   </script>
 </body>
