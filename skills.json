@@ -308,7 +308,7 @@
         "Dashboard",
         "Career"
       ],
-      "category": "Career",
+      "category": "career",
       "installCommand": "reconnect and refresh my job search",
       "demoUrl": "https://goyalsandeep2k.github.io/job-search-dashboard/",
       "githubUrl": "https://github.com/goyalsandeep2k/job-search-dashboard",
@@ -338,10 +338,38 @@
         "Job Search",
         "Interview"
       ],
-      "category": "Career",
+      "category": "career",
       "installCommand": "polish my resume",
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/resume-polish/main/SKILL.md",
       "repoUrl": "https://github.com/goyalsandeep2k/resume-polish",
+      "downloads": 1,
+      "stars": 1,
+      "featured": true,
+      "new": true,
+      "createdAt": "2026-05-29"
+    },
+    {
+      "id": "resume-critique",
+      "name": "Resume Critique",
+      "fullName": "Resume Critique \u2014 Expert Feedback & JD Readiness Check",
+      "emoji": "\ud83c\udfaf",
+      "color": "#dc2626",
+      "author": "goyalsandeep2k",
+      "authorName": "Sandeep Goyal",
+      "description": "Expert resume critique with actionable feedback. Scores your resume across 7 dimensions, checks readiness against specific JDs, tells you exactly what's missing, and gives a prioritized action list.",
+      "longDescription": "Best for resumes already in good shape that need expert eyes. Get a 7-dimension health scorecard (X/70), a 'what's missing' report covering content gaps and keyword gaps, a per-role JD readiness check with match percentage and candidate readiness rating, and a prioritized action list (Critical / High / Nice-to-have). Fast and direct \u2014 pure expert critique, no rewriting. Use Resume Polish if you want the actual rewrite done for you.",
+      "tags": [
+        "Resume",
+        "Career",
+        "Feedback",
+        "JD Match",
+        "Job Search",
+        "ATS"
+      ],
+      "category": "career",
+      "installCommand": "critique my resume",
+      "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/resume-critique/main/SKILL.md",
+      "repoUrl": "https://github.com/goyalsandeep2k/resume-critique",
       "downloads": 1,
       "stars": 1,
       "featured": true,
@@ -373,6 +401,10 @@
     {
       "id": "mcp-connector",
       "label": "\ud83d\udd0c MCP Connectors"
+    },
+    {
+      "id": "career",
+      "label": "\ud83d\udcbc Career"
     }
   ],
   "stats": {
