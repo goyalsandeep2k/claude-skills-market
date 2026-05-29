@@ -312,12 +312,13 @@
       "installCommand": "reconnect and refresh my job search",
       "demoUrl": "https://goyalsandeep2k.github.io/job-search-dashboard/",
       "githubUrl": "https://github.com/goyalsandeep2k/job-search-dashboard",
-      "rating": 5.0,
-      "reviews": 1,
-      "installs": 1,
       "featured": true,
       "new": true,
-      "version": "1.0.0"
+      "downloads": 1,
+      "stars": 1,
+      "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/job-search-dashboard/main/dashboard.html",
+      "repoUrl": "https://github.com/goyalsandeep2k/job-search-dashboard",
+      "createdAt": "2026-05-29"
     }
   ],
   "categories": [
