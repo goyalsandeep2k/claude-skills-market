@@ -289,6 +289,35 @@
       "demoUrl": "https://goyalsandeep2k.github.io/program-health-dashboard/sales-health.html",
       "downloads": 18,
       "stars": 6
+    },
+    {
+      "id": "job-search-dashboard",
+      "name": "Job Search Dashboard",
+      "fullName": "LinkedIn Job Search Dashboard",
+      "emoji": "\ud83d\udcbc",
+      "color": "#0a66c2",
+      "author": "goyalsandeep2k",
+      "authorName": "Sandeep Goyal",
+      "description": "AI-powered job search command center. Pulls real applications from LinkedIn, scores fit against your profile, and generates a live pipeline dashboard.",
+      "longDescription": "Built for senior leaders managing 50+ active applications. Connects to LinkedIn via browser automation, extracts real job applications, scores each role against your profile (1-10 fit score with reasoning), tracks pipeline stages (applied \u2192 phone screen \u2192 interview \u2192 offer), and publishes a self-contained HTML dashboard to GitHub Pages. Trigger phrase: 'reconnect and refresh my job search'.",
+      "tags": [
+        "Job Search",
+        "LinkedIn",
+        "Pipeline",
+        "Fit Scoring",
+        "Dashboard",
+        "Career"
+      ],
+      "category": "Career",
+      "installCommand": "reconnect and refresh my job search",
+      "demoUrl": "https://goyalsandeep2k.github.io/job-search-dashboard/",
+      "githubUrl": "https://github.com/goyalsandeep2k/job-search-dashboard",
+      "rating": 5.0,
+      "reviews": 1,
+      "installs": 1,
+      "featured": true,
+      "new": true,
+      "version": "1.0.0"
     }
   ],
   "categories": [
