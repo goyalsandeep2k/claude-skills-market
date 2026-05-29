@@ -85,6 +85,8 @@
         <div class="h-stat"><span class="h-stat-n" id="st-contributors">8</span><span class="h-stat-l">Contributors</span></div>
         <div class="h-stat-div"></div>
         <div class="h-stat"><span class="h-stat-n" id="st-stars">202</span><span class="h-stat-l">Stars</span></div>
+        <div class="h-stat-div"></div>
+        <div class="h-stat"><span class="h-stat-n" id="st-pageviews">—</span><span class="h-stat-l">Page Views</span></div>
       </div>
     </div>
   </section>
@@ -219,5 +221,31 @@
   </div>
 
   <script src="app.js"></script>
+
+  <!-- GoatCounter Analytics — privacy-friendly, no cookies -->
+  <script data-goatcounter="https://sandeep-skills.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+
+  <!-- Live page-view counter via CountAPI -->
+  <script>
+  (function() {
+    var NAMESPACE = 'sandeep-skills-market';
+    var KEY       = 'pageviews';
+    var el        = document.getElementById('st-pageviews');
+
+    // Hit = increment + get new count
+    fetch('https://api.countapi.xyz/hit/' + NAMESPACE + '/' + KEY)
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (d && d.value != null) {
+          var v = d.value;
+          el.textContent = v >= 1000
+            ? (v / 1000).toFixed(1).replace(/\.0$/, '') + 'k'
+            : v;
+        }
+      })
+      .catch(function() { el.textContent = '—'; });
+  })();
+  </script>
 </body>
 </html>
