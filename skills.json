@@ -319,6 +319,34 @@
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/job-search-dashboard/main/dashboard.html",
       "repoUrl": "https://github.com/goyalsandeep2k/job-search-dashboard",
       "createdAt": "2026-05-29"
+    },
+    {
+      "id": "resume-polish",
+      "name": "Resume Polish",
+      "fullName": "Resume Polish \u2014 ATS Check & LinkedIn Optimizer",
+      "emoji": "\u2728",
+      "color": "#7c3aed",
+      "author": "goyalsandeep2k",
+      "authorName": "Sandeep Goyal",
+      "description": "Interactive resume review and polish. ATS compatibility check, accomplishment integration, LinkedIn optimization, and keyword gap report \u2014 collaborative & interactive.",
+      "longDescription": "Best for resumes that are almost complete but need updating. Run a 5-dimension diagnostic (ATS, accomplishments, keywords, impact, LinkedIn alignment), get a side-by-side collaborative rewrite, a keyword gap report for your target roles, and a full LinkedIn pack (headline + About + experience bullets). Works for any seniority level from IC to C-Suite.",
+      "tags": [
+        "Resume",
+        "Career",
+        "ATS",
+        "LinkedIn",
+        "Job Search",
+        "Interview"
+      ],
+      "category": "Career",
+      "installCommand": "polish my resume",
+      "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/resume-polish/main/SKILL.md",
+      "repoUrl": "https://github.com/goyalsandeep2k/resume-polish",
+      "downloads": 1,
+      "stars": 1,
+      "featured": true,
+      "new": true,
+      "createdAt": "2026-05-29"
     }
   ],
   "categories": [
