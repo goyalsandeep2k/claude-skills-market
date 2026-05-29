@@ -83,8 +83,12 @@ async function loadSkills() {
     allSkills = data.skills;
     filtered  = [...allSkills];
 
-    document.getElementById('st-skills').textContent      = data.stats.totalSkills;
-    document.getElementById('st-downloads').textContent   = data.stats.totalDownloads;
+    // Auto-sync stats from actual skills array (always accurate, never stale)
+    const totalSkills      = data.skills.length;
+    const totalDownloads   = data.skills.reduce((sum, s) => sum + (s.downloads || 0), 0);
+    const totalStars       = data.skills.reduce((sum, s) => sum + (s.stars || 0), 0);
+    document.getElementById('st-skills').textContent       = totalSkills;
+    document.getElementById('st-downloads').textContent    = totalDownloads;
     document.getElementById('st-contributors').textContent = data.stats.totalContributors;
     renderCategories(data.categories);
     renderSkills();

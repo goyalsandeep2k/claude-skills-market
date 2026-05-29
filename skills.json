@@ -308,7 +308,7 @@
         "Dashboard",
         "Career"
       ],
-      "category": "career",
+      "category": "job-search",
       "installCommand": "reconnect and refresh my job search",
       "demoUrl": "https://goyalsandeep2k.github.io/job-search-dashboard/",
       "githubUrl": "https://github.com/goyalsandeep2k/job-search-dashboard",
@@ -338,7 +338,7 @@
         "Job Search",
         "Interview"
       ],
-      "category": "career",
+      "category": "job-search",
       "installCommand": "polish my resume",
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/resume-polish/main/SKILL.md",
       "repoUrl": "https://github.com/goyalsandeep2k/resume-polish",
@@ -366,7 +366,7 @@
         "Job Search",
         "ATS"
       ],
-      "category": "career",
+      "category": "job-search",
       "installCommand": "critique my resume",
       "rawUrl": "https://raw.githubusercontent.com/goyalsandeep2k/resume-critique/main/SKILL.md",
       "repoUrl": "https://github.com/goyalsandeep2k/resume-critique",
@@ -403,14 +403,14 @@
       "label": "\ud83d\udd0c MCP Connectors"
     },
     {
-      "id": "career",
-      "label": "\ud83d\udcbc Career"
+      "id": "job-search",
+      "label": "\ud83d\udcbc Job Search"
     }
   ],
   "stats": {
-    "totalSkills": 10,
-    "totalDownloads": 616,
+    "totalSkills": 14,
+    "totalDownloads": 619,
     "totalContributors": 1,
-    "totalStars": 199
+    "totalStars": 202
   }
 }
