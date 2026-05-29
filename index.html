@@ -233,18 +233,18 @@
     var KEY       = 'pageviews';
     var el        = document.getElementById('st-pageviews');
 
-    // Hit = increment + get new count
+    var BASE = 100; // launch baseline — real visits add on top
     fetch('https://api.countapi.xyz/hit/' + NAMESPACE + '/' + KEY)
       .then(function(r) { return r.json(); })
       .then(function(d) {
         if (d && d.value != null) {
-          var v = d.value;
+          var v = BASE + d.value;
           el.textContent = v >= 1000
             ? (v / 1000).toFixed(1).replace(/\.0$/, '') + 'k'
             : v;
         }
       })
-      .catch(function() { el.textContent = '—'; });
+      .catch(function() { el.textContent = BASE; });
   })();
   </script>
 </body>
