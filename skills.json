@@ -1,6 +1,46 @@
 {
   "skills": [
     {
+      "name": "Resume Builder",
+      "fullName": "Interactive Resume Builder",
+      "authorName": "Sandeep Goyal",
+      "authorHandle": "goyalsandeep2k",
+      "description": "Interactive resume builder web app with live two-panel editor, navy/blue design, auto metric highlights, Intuit/Oracle logo badges, clickable contact links, executive stat chips, and one-click PDF export.",
+      "invoke": "/resume builder",
+      "tags": [
+        "Resume",
+        "Builder",
+        "Interactive",
+        "PDF",
+        "Career"
+      ],
+      "githubUrl": "https://github.com/goyalsandeep2k/resume-builder",
+      "appUrl": "https://goyalsandeep2k.github.io/resume-builder/",
+      "category": "Career",
+      "status": "live",
+      "new": true
+    },
+    {
+      "name": "Resume Builder",
+      "fullName": "Interactive Resume Builder",
+      "authorName": "Sandeep Goyal",
+      "authorHandle": "goyalsandeep2k",
+      "description": "Interactive resume builder web app with live two-panel editor, navy/blue design, auto metric highlights, Intuit/Oracle logo badges, clickable contact links, executive stat chips, and one-click PDF export.",
+      "invoke": "/resume builder",
+      "tags": [
+        "Resume",
+        "Builder",
+        "Interactive",
+        "PDF",
+        "Career"
+      ],
+      "githubUrl": "https://github.com/goyalsandeep2k/resume-builder",
+      "appUrl": "https://goyalsandeep2k.github.io/resume-builder/",
+      "category": "Career",
+      "status": "live",
+      "new": true
+    },
+    {
       "id": "pmaas",
       "name": "PMaaS",
       "fullName": "Program Management as a Service",
